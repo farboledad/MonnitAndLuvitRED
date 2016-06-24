@@ -1,0 +1,130 @@
+[
+  {
+    "order": 0,
+    "label": "Monnit_config",
+    "id": "c5115c28.c1615",
+    "type": "tab",
+    "children": []
+  },
+  {
+    "id": "680f01a6.40c458",
+    "type": "monnit config",
+    "__package": "luvitred/sensors",
+    "__version": "0.1.0",
+    "boardtype": "option_back",
+    "channelmask": "",
+    "networkid": "",
+    "protolog": false
+  },
+  {
+    "id": "af195b55.a2d708",
+    "type": "tcp endpoint",
+    "__package": "luvitred/core-io",
+    "__version": "0.1.0",
+    "name": "",
+    "mode": "server",
+    "maxconnections": "10",
+    "reconnectTime": "",
+    "idletimeout": "60",
+    "port": "",
+    "listenport": "4000",
+    "host": "",
+    "datamode": "stream",
+    "datatype": "binary",
+    "delimiter": "\\n",
+    "conntimeout": "",
+    "nagle": true,
+    "firewall": true,
+    "keepalive": "",
+    "usetls": false,
+    "rejectunauthorized": true,
+    "internetevents": false
+  },
+  {
+    "id": "56b3789.33ef988",
+    "type": "monnit sensor",
+    "__package": "luvitred/sensors",
+    "__version": "0.1.0",
+    "monnitconfig": "680f01a6.40c458",
+    "sensorid": "87809",
+    "heartbeat": "10",
+    "awareheartbeat": "5",
+    "linkunits": "hours",
+    "linkinterval": "2",
+    "topic": "temperature",
+    "name": "Temp_Sensor",
+    "settopic": false,
+    "x": 250,
+    "y": 50,
+    "z": "c5115c28.c1615",
+    "wires": [
+      [
+        "b03b5a97.78fb9",
+        "1412e120.4a1267",
+        "79ff8516.00ff9c"
+      ]
+    ]
+  },
+  {
+    "id": "b03b5a97.78fb9",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "all": false,
+    "active": true,
+    "console": "false",
+    "complete": "false",
+    "x": 450,
+    "y": 125,
+    "z": "c5115c28.c1615",
+    "wires": []
+  },
+  {
+    "id": "1412e120.4a1267",
+    "type": "debug",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "all": false,
+    "active": true,
+    "console": "false",
+    "complete": "true",
+    "x": 450,
+    "y": 175,
+    "z": "c5115c28.c1615",
+    "wires": []
+  },
+  {
+    "id": "308fd61c.589f62",
+    "type": "tcp out",
+    "__package": "luvitred/core-io",
+    "__version": "0.1.0",
+    "endpoint": "af195b55.a2d708",
+    "queueenabled": false,
+    "queue": "",
+    "mode": "all",
+    "name": "tcpout",
+    "x": 625,
+    "y": 50,
+    "z": "c5115c28.c1615",
+    "wires": []
+  },
+  {
+    "id": "79ff8516.00ff9c",
+    "type": "template",
+    "__package": "luvitred/core-core",
+    "__version": "0.1.0",
+    "name": "",
+    "field": "",
+    "template": "The temperature is: {{payload}}\\r\nThe battery voltage is: {{monnit.volts}}\\r\n",
+    "x": 462.5,
+    "y": 50,
+    "z": "c5115c28.c1615",
+    "wires": [
+      [
+        "308fd61c.589f62"
+      ]
+    ]
+  }
+]
